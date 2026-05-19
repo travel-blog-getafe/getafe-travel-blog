@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Getafe, Bohol</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* IMPORT GOOGLE FONTS */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #06b6d4;
+            --accent-color: #90E0EF;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #00B4D8 0%, #90E0EF 100%);
+            color: var(--dark-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* GLASSMORPHISM UTILITY */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+        }
+
+        /* HEADER */
+        header {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%),
+                url('https://tse4.mm.bing.net/th/id/OIP.UUotEBbsPsR2xu0IjsZfMQHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.02em;
+        }
+
+        .hero-text p {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* MODERN BUTTON */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #00B4D8 100%);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* NAVBAR BASE */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+        }
+
+        .navbar-nav {
+            align-items: flex-start;
+        }
+
+        .navbar-nav .nav-link {
+            white-space: nowrap;
+        }
+
+        /* BRAND */
+        .navbar-brand {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* DESKTOP NAV */
+        @media (min-width: 992px) {
+            .navbar-nav {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+
+            .nav-link {
+                color: white;
+                font-weight: 500;
+                padding: 0.5rem 1rem;
+                border-radius: 25px;
+                transition: 0.3s ease;
+            }
+
+            .nav-link:hover {
+                background: rgba(255, 255, 255, 0.08);
+                color: white;
+            }
+        }
+
+        /* MOBILE NAV FIX */
+        @media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .navbar-nav {
+        width: 100%;
+        gap: 0;
+    }
+
+    .navbar-nav .nav-link {
+        display: block;
+        width: 100%;
+        padding: 0.9rem 1rem;
+        font-size: 1rem;
+        border-radius: 8px;
+    }
+}
+
+        /* TOGGLER */
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        /* HOME CONTENT */
+        .home-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: var(--shadow);
+        }
+
+        /* CARDS */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .card-content p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* GALLERY */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* CULTURE BOX */
+        .culture-box {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            color: white;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* CONTACT BOX */
+        .contact-box {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            color: white;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .contact-box p {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-box strong {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-text h1 {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-text p {
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .btn {
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        section {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav ul {
+                padding: 1rem;
+            }
+
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+
+            /* Make header shorter on mobile and add padding to avoid overlap */
+            header {
+                height: auto;
+                padding: 5.5rem 1rem 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: clamp(2rem, 10vw, 3.5rem);
+                margin-bottom: 0.75rem;
+            }
+
+            .hero-text p {
+                font-size: clamp(0.95rem, 4vw, 1.05rem);
+                margin-bottom: 1rem;
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .home-content,
+            .culture-box,
+            .contact-box {
+                padding: 2rem;
+            }
+
+            .card-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function () {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header id="home">
+        <div class="hero-text">
+            <h1>Discover Getafe, Bohol</h1>
+            <p>
+                Experience the peaceful coastal beauty, islands, culture,
+                and marine paradise of Getafe, Bohol.
+            </p>
+            <a href="#explore" class="btn">Explore Now</a>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">Getafe</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#touristspots">Tourist Spots</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#culture">Culture</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME SECTION -->
+
+    <section id="explore">
+        <h2>Welcome to Getafe</h2>
+
+        <div class="home-content">
+
+            <p>
+                Getafe is a beautiful coastal municipality located in northern Bohol,
+                Philippines. Known for its calm beaches, fishing communities,
+                island adventures, and rich marine biodiversity, Getafe is one of the hidden gems of Bohol.
+            </p>
+
+            <br>
+
+            <p>
+                It serves as a gateway between Cebu and Bohol and offers relaxing
+                scenery perfect for nature lovers and travelers looking for peaceful destinations.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- TOURIST SPOTS -->
+
+    <section id="touristspots">
+        <h2>Tourist Spots</h2>
+
+        <div class="card-container">
+
+            <div class="card">
+
+                <img
+                    src="https://i.ytimg.com/vi/a01L99yy5-M/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGDkgUyhyMA8=&rs=AOn4CLCgFXWp7_HsVG9s4cMQdKDwhyyH_w">
+
+                <div class="card-content">
+
+                    <h3>Pandanon Island</h3>
+
+                    <p>
+                        Pandanon Island is famous for its white sandbar,
+                        crystal-clear waters, and relaxing tropical scenery.
+                        It is perfect for swimming, island hopping, and beach adventures.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <img src="https://i.ytimg.com/vi/bpC7nRzi63g/maxresdefault.jpg">
+
+                <div class="card-content">
+
+                    <h3>Getafe Coastal Area</h3>
+
+                    <p>
+                        Enjoy peaceful coastal views, fishing boats,
+                        fresh seafood, and the relaxing atmosphere of Getafe’s shoreline.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <img src="https://bohol.ph/pics/large/IMG_0820.jpg">
+
+                <div class="card-content">
+
+                    <h3>Historic Getafe Church</h3>
+
+                    <p>
+                        The church reflects the municipality’s rich culture,
+                        history, and religious traditions with its beautiful architecture.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- GALLERY -->
+
+    <section id="gallery">
+        <h2>Gallery</h2>
+
+        <div class="gallery">
+
+            <img
+                src="https://scontent.fmnl25-5.fna.fbcdn.net/v/t39.30808-6/624579988_122161122596926203_7595428024718976995_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHR3nsy7ebRoKoV_pGTyMpxSD0F5G9LJNJIPQXkb0sk0pWmy2pSPVsw21U-ksattdjJzEikeeuHWmF4JLL2NZLL&_nc_ohc=_OEseXUZxWMQ7kNvwGehrdo&_nc_oc=Adq3jMJ3CQ-ktTPV0pYRMie3EYzOiI1IuoWL8O_4Ytgw4g9-HfQUVELC8wf6ap4BVBI&_nc_zt=23&_nc_ht=scontent.fmnl25-5.fna&_nc_gid=S4JwnqS0K62CEzSHQ_c7bw&_nc_ss=7b2a8&oh=00_Af6NO_XsamGWikzo0SieILoJRoKQe5UPJ1moiQz_Ce8Q3Q&oe=6A10EEF1">
+
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Getafe_Bohol_1.jpg">
+
+            <img
+                src="https://scontent.fmnl25-1.fna.fbcdn.net/v/t39.30808-6/536270297_24686090297695356_734006725926139875_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeEM5okyS0bN1yAWJoI9VuQA99WyG1vX7vD31bIbW9fu8B60wXKAAVV8WN8nnO2HBvwheay0bLUiDeP7OVBUXQYE&_nc_ohc=qPjJ-h0IYXsQ7kNvwFw1XWL&_nc_oc=AdoIZ-uEN08PesPLRJkv0oKv7ggb_ZhDUVhKG9lCGzBNrgU-zSZKJPtUVUTlLAwGQOg&_nc_zt=23&_nc_ht=scontent.fmnl25-1.fna&_nc_gid=Wm_ifduo4hm0iMrClYW1Ng&_nc_ss=7b2a8&oh=00_Af6bwQ8rVkTkqSOt7MAkX9kpE_SYPxkYfnpXb-HGXwjvNA&oe=6A10DA38">
+
+            <img
+                src="https://hblimg.mmtcdn.com/content/hubble/img/bohol/mmt/activities/m_Bohol_Pandanon_Island_2_l_507_900.jpg">
+
+            <img
+                src="https://scontent.fmnl25-3.fna.fbcdn.net/v/t39.30808-6/616846681_1400753471844017_6134341211389483756_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGT0sWZGhVRGjki-4QiSfCU929OtkWqpTX3b062RaqlNcB3oWaKOhzUVgscV1pQ66ayrbdszNhiJuCBxubMcbA4&_nc_ohc=CR2VH1M4O80Q7kNvwH_Cngp&_nc_oc=Adom0K3WyBtMl3iJShoG8cNJ-afMcQNAK4j1hd2U9xQ7jPQ3PLiwumzxzwgg69Zk-zo&_nc_zt=23&_nc_ht=scontent.fmnl25-3.fna&_nc_gid=BHGb53AryESnUHC1a9sVzw&_nc_ss=7b2a8&oh=00_Af4hTYWgCOerefnO_UsSFtLj9SXqk8dex1QjEZnqRVursg&oe=6A10E8C2">
+
+            <img
+                src="https://scontent.fmnl25-6.fna.fbcdn.net/v/t39.30808-6/696420029_122207628704500777_4420717786394909678_n.jpg?stp=cp6_dst-jpg_p526x296_tt6&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEvG0xDJ4DtWkw72yY2IzkkrDmLyyvYI2OsOYvLK9gjYynk_TK10BRKz09sa6C9sKWDevTj1r7XTySibaxHCcQ6&_nc_ohc=FRoduQ0MPxYQ7kNvwGpjMd6&_nc_oc=AdrKWSV71m49S835LBg16FZyPZWom96PDG-dqmWZu2flyeAN0zcWrl6NPSLc2ozuJk0&_nc_zt=23&_nc_ht=scontent.fmnl25-6.fna&_nc_gid=l1wyoTGP6TJCQkZ9r5sXwA&_nc_ss=7b2a8&oh=00_Af6iR6t6T8DL0AOjQxh7nOXNJTWw2rkCdOUPFLK7I2Ym7w&oe=6A10C244">
+
+        </div>
+
+    </section>
+
+    <!-- CULTURE -->
+
+    <section id="culture">
+        <h2>Culture and Traditions</h2>
+
+        <div class="culture-box">
+
+            <p>
+                The people of Getafe are known for their hospitality,
+                fishing traditions, and strong community spirit.
+                Seafood plays an important role in their local lifestyle and economy.
+            </p>
+
+            <br>
+
+            <p>
+                Festivals, religious celebrations, and local traditions
+                continue to preserve the rich culture and heritage of the municipality.
+            </p>
+
+            <br>
+
+            <p>
+                Getafe is also connected to the famous Danajon Double Barrier Reef,
+                making marine conservation and fishing important parts of local life.
+            </p>
+
+        </div>
+
+        <div class="gallery" style="margin-top: 2rem;">
+            <img src="https://images.openai.com/static-rsc-4/Clmg3oGL7KE1vtsSZPzYKaVQlOQYpuKuQqgXmo_bi8PpV_fZIaJabK_LnCrPxMO8uweLHx526dGvF7feyphqwvEIKQBJHzAUzQ-h32PnJXKZG8e0IkWWJmB8rQZ4Zda-oEIw6FWkqY_9Cw_3X5rAOgWFuroAnKAqOVdp1ACPvw5z3Dsp5mMtggYO_9L6WDkB?purpose=fullsize"
+                alt="Getafe cultural celebration">
+            <img src="https://scontent.fmnl25-3.fna.fbcdn.net/v/t39.30808-6/626032076_122161116698926203_1298177591210705367_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGBSWtaTzqkqfCzzCimpsaaHNzvTn87eeEc3O9Ofzt54TgaP2_SgRFgq7Ue6bxuBNFJN1zrlmrdPQ1R19fAxK1V&_nc_ohc=l3J_PxLtCyAQ7kNvwGscW0r&_nc_oc=AdrjkgMujJKW4Lo0TSPWcm4skfB7QwDJpgGu2v_Migm7n7p09cm9kgsM_wvmS17YgaM&_nc_zt=23&_nc_ht=scontent.fmnl25-3.fna&_nc_gid=6s-SQCdTpErfLTHdSyG6Hw&_nc_ss=7b2a8&oh=00_Af4zcIeEqmoym4Xjgywu8L6Qa_daRI9CKdxKgnsXeo5EHw&oe=6A10B8B7"
+                alt="Festive folk dancers">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.6EwS6CsBMNxgJzOkh2w06QHaEA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+                alt="Traditional Filipino boat by the shore">
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+        <h2>Contact Information</h2>
+
+        <div class="contact-box">
+
+            <p><strong>Municipality of Getafe, Bohol</strong></p>
+
+            <p>📍 Getafe, Bohol, Philippines</p>
+
+            <p>📞 Tourism Office: 0923-449-9504</p>
+
+            <p>✉️ tourismoffice@bohol.gov.ph</p>
+
+            <p>
+                Visit Getafe and experience the beauty of northern Bohol.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Discover Getafe, Bohol | Travel Blog Website
+        </p>
+
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function () {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
