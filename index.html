@@ -192,36 +192,36 @@
 
         /* MOBILE NAV FIX */
         @media (max-width: 991.98px) {
-    .navbar-collapse {
-        background: rgba(0, 0, 0, 0.85);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 12px;
-        padding: 1rem;
-        margin-top: 0.5rem;
-    }
+            .navbar-collapse {
+                background: rgba(0, 0, 0, 0.85);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-radius: 12px;
+                padding: 1rem;
+                margin-top: 0.5rem;
+            }
 
-    .navbar-nav {
-        width: 100%;
-        gap: 0;
-    }
+            .navbar-nav {
+                width: 100%;
+                gap: 0;
+            }
 
-    .navbar-nav .nav-link {
-        display: block;
-        width: 100%;
-        padding: 0.9rem 1rem;
-        font-size: 1rem;
-        border-radius: 8px;
-    }
-}
+            .navbar-nav .nav-link {
+                display: block;
+                width: 100%;
+                padding: 0.9rem 1rem;
+                font-size: 1rem;
+                border-radius: 8px;
+            }
+        }
 
         /* TOGGLER */
         .navbar-toggler {
-            border-color: rgba(255, 255, 255, 0.6);
+            border-color: rgba(255, 255, 255, 0.8);
         }
 
         .navbar-toggler-icon {
-            filter: invert(1);
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
         }
 
         /* SECTIONS */
@@ -509,6 +509,17 @@
                 }
             });
         });
+
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                if (bsCollapse) {
+                    bsCollapse.hide();
+                }
+            });
+        });
+
     </script>
 </head>
 
