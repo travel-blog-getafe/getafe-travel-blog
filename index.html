@@ -160,14 +160,6 @@
             white-space: nowrap;
         }
 
-        /* BRAND */
-        .navbar-brand {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-        }
-
         /* DESKTOP NAV */
         @media (min-width: 992px) {
             .navbar-nav {
@@ -190,33 +182,46 @@
             }
         }
 
-        /* MOBILE NAV FIX */
+        /* MOBILE NAV */
         @media (max-width: 991.98px) {
             .navbar-collapse {
                 /* match site gradient for better cohesion on mobile */
                 background: linear-gradient(135deg, #00B4D8 0%, #90E0EF 100%);
                 color: white;
                 border-radius: 12px;
-                padding: 1rem;
+                padding: 0.75rem 0.5rem;
                 margin-top: 0.5rem;
-                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+                box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+                max-width: max-content;
+                position: absolute;
+                right: 0;
+                top: 100%;
+                margin-right: 1rem;
             }
 
             .navbar-collapse .nav-link {
                 color: white;
+                transition: all 0.3s ease;
+            }
+
+            .navbar-collapse .nav-link:hover {
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 8px;
             }
 
             .navbar-nav {
-                width: 100%;
+                width: auto;
                 gap: 0;
+                display: flex;
+                flex-direction: column;
             }
 
             .navbar-nav .nav-link {
                 display: block;
-                width: 100%;
-                padding: 0.9rem 1rem;
-                font-size: 1rem;
-                border-radius: 8px;
+                padding: 0.75rem 1rem;
+                font-size: 0.95rem;
+                border-radius: 6px;
+                white-space: nowrap;
             }
         }
 
@@ -226,11 +231,9 @@
         }
 
         /* brand logo sizing */
-        .navbar-brand svg.nav-logo {
-            height: 28px;
-            width: 28px;
-            margin-right: 8px;
-            vertical-align: middle;
+        .navbar-brand {
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
         }
 
         /* ensure scroll targets land below fixed navbar (works on desktop too) */
@@ -244,7 +247,7 @@
         :root { --nav-height: 72px; }
         header, section { scroll-margin-top: calc(var(--nav-height) + 8px); }
 
-        /* SECTIONS */
+        /* SECTIONS */24
         section {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -525,7 +528,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#home"><svg class="nav-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="3" fill="white" /><path d="M2 18c2-2 4-3 8-3s6 1 8 3" stroke="white" fill="none"/></svg>Getafe</a>
+            <a class="navbar-brand fw-bold" href="#home">Getafe</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
                 aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
