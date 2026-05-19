@@ -185,33 +185,38 @@
         /* MOBILE NAV */
         @media (max-width: 991.98px) {
             .navbar-collapse {
-                /* match site gradient for better cohesion on mobile */
-                background: linear-gradient(135deg, #00B4D8 0%, #90E0EF 100%);
+                background: linear-gradient(180deg, rgba(16, 185, 129, 0.96), rgba(14, 165, 233, 0.96));
                 color: white;
-                border-radius: 12px;
-                padding: 0.75rem 0.5rem;
+                border-radius: 18px;
+                padding: 0.6rem 0.6rem;
                 margin-top: 0.5rem;
-                box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-                max-width: max-content;
+                box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
+                min-width: 220px;
+                width: auto;
                 position: absolute;
-                right: 0;
+                right: 1rem;
                 top: 100%;
-                margin-right: 1rem;
+                overflow: hidden;
+                border: 1px solid rgba(255, 255, 255, 0.25);
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
             }
 
             .navbar-collapse .nav-link {
                 color: white;
                 transition: all 0.3s ease;
+                letter-spacing: 0.02em;
             }
 
             .navbar-collapse .nav-link:hover {
-                background: rgba(255, 255, 255, 0.2);
-                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.18);
+                border-radius: 10px;
+                color: #f8fafc;
             }
 
             .navbar-nav {
                 width: auto;
-                gap: 0;
+                gap: 0.35rem;
                 display: flex;
                 flex-direction: column;
             }
@@ -219,8 +224,8 @@
             .navbar-nav .nav-link {
                 display: block;
                 padding: 0.75rem 1rem;
-                font-size: 0.95rem;
-                border-radius: 6px;
+                font-size: 0.96rem;
+                border-radius: 10px;
                 white-space: nowrap;
             }
         }
@@ -237,7 +242,7 @@
         }
 
         /* ensure scroll targets land below fixed navbar (works on desktop too) */
-        html { scroll-padding-top: calc(var(--nav-height) + 8px); }
+        html { scroll-padding-top: calc(var(--nav-height) + 24px); }
 
         .navbar-toggler-icon {
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
@@ -245,9 +250,9 @@
 
         /* Ensure scrolled-to targets sit below the fixed navbar */
         :root { --nav-height: 72px; }
-        header, section { scroll-margin-top: calc(var(--nav-height) + 8px); }
+        header, section { scroll-margin-top: calc(var(--nav-height) + 24px); }
 
-        /* SECTIONS */24
+        /* SECTIONS */
         section {
             padding: 5rem 2rem;
             max-width: 1200px;
