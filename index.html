@@ -185,7 +185,7 @@
             }
 
             .nav-link:hover {
-                background: whitesmoke;
+                background: rgba(21, 21, 21, 0.655);
                 color: white;
             }
         }
@@ -193,12 +193,17 @@
         /* MOBILE NAV FIX */
         @media (max-width: 991.98px) {
             .navbar-collapse {
-                background: rgba(0, 0, 0, 0.85);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
+                /* match site gradient for better cohesion on mobile */
+                background: linear-gradient(135deg, #00B4D8 0%, #90E0EF 100%);
+                color: white;
                 border-radius: 12px;
                 padding: 1rem;
                 margin-top: 0.5rem;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            }
+
+            .navbar-collapse .nav-link {
+                color: white;
             }
 
             .navbar-nav {
@@ -219,6 +224,17 @@
         .navbar-toggler {
             border-color: rgba(255, 255, 255, 0.8);
         }
+
+        /* brand logo sizing */
+        .navbar-brand svg.nav-logo {
+            height: 28px;
+            width: 28px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        /* ensure scroll targets land below fixed navbar (works on desktop too) */
+        html { scroll-padding-top: calc(var(--nav-height) + 8px); }
 
         .navbar-toggler-icon {
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
@@ -509,7 +525,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#home">Getafe</a>
+            <a class="navbar-brand fw-bold" href="#home"><svg class="nav-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="3" fill="white" /><path d="M2 18c2-2 4-3 8-3s6 1 8 3" stroke="white" fill="none"/></svg>Getafe</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
                 aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
